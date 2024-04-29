@@ -13,7 +13,7 @@ class ChirpController extends Controller
      */
     public function index(): View
     {
-        return view('chirps', compact());
+        return view('chirps');
     }
 
     /**
