@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UserController;
 
 
 Route::view('/', 'welcome');
@@ -16,6 +17,8 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 Route::get('chirps', [ChirpController::class, 'index'])->middleware(['auth', 'verified'])->name('chirps');
+
+Route::get('{name}', [UserController::class, 'show'])->middleware(['auth'])->name('user.show');
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     // STATUS

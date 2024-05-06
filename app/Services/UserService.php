@@ -32,4 +32,12 @@ class UserService
 
         return $inactive;
     }
+
+    // find a user by id
+    public static function find($id)
+    {   
+        $user = User::find($id);
+
+        return $user;
+    }
 }

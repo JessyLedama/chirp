@@ -120,4 +120,53 @@ new class extends Component
             </div>
         </div>
     </div>
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/user-show.css') }}">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="content" class="content content-full-width">
+                    <!-- begin profile -->
+                    <div class="profile">
+                        <div class="profile-header">
+                            <!-- BEGIN profile-header-tab -->
+                            <ul class="profile-header-tab nav nav-tabs">
+                                <li class="nav-item">
+                                    <!-- <a href="{{ route('chirps') }}" target="__blank" class="nav-link_" :active="request()->routeIs('chirps')">
+                                        POSTS
+                                    </a> -->
+
+                                    <x-nav-link :href="route('chirps')" :active="request()->routeIs('chirps')" wire:navigate>
+                                        {{ __('POSTS') }}
+                                    </x-nav-link>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">
+                                        VIDEOS
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" class="nav-link_">
+                                        PLAYLISTS
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" class="nav-link_">
+                                        EVENTS
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- END profile-header-tab -->
+                        </div>
+                    </div>
+                    <!-- end profile -->
+                </div>
+            </div>
+        </div>
+    </div>
 </nav>
