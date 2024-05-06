@@ -1,0 +1,10 @@
+.tl-profile-pic{
+    border-radius: 50%;
+    margin-right: 10px;
+    max-height: 62px;
+}
+
+.tl-no-profile-pic{
+    font-size: 62px;
+    margin-right: 10px;
+}
