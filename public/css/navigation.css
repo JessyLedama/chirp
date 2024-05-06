@@ -2,6 +2,10 @@
     width: 31% !important;
 }
 
+.content-full-width{
+    margin: 22px 0 0 0;
+}
+
 .nav-profile-pic{
     max-width: 31px;
     border-radius: 50%;
@@ -11,3 +15,5 @@
 .post-chirp{
     margin: 0 17% 3% 20%;
 }
+
+

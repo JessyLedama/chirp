@@ -28,16 +28,51 @@ new class extends Component
                     </a>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('chirps')" :active="request()->routeIs('chirps')" wire:navigate>
-                        {{ __('Chirps') }}
-                    </x-nav-link>
+                <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="content" class="content content-full-width">
+                    <!-- begin profile -->
+                    <div class="profile">
+                        <div class="profile-header">
+                            <!-- BEGIN profile-header-tab -->
+                            <ul class="profile-header-tab nav nav-tabs">
+                                <li class="nav-item">
+                                    <!-- <a href="{{ route('chirps') }}" target="__blank" class="nav-link_" :active="request()->routeIs('chirps')">
+                                        POSTS
+                                    </a> -->
 
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
+                                    <x-nav-link :href="route('chirps')" :active="request()->routeIs('chirps')" wire:navigate>
+                                        {{ __('POSTS') }}
+                                    </x-nav-link>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">
+                                        VIDEOS
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" class="nav-link_">
+                                        PLAYLISTS
+                                    </a>
+                                </li>
+                                
+                                <li class="nav-item">
+                                    <a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" class="nav-link_">
+                                        EVENTS
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- END profile-header-tab -->
+                        </div>
+                    </div>
+                    <!-- end profile -->
                 </div>
+            </div>
+        </div>
+    </div>
             </div>
 
             <!-- Settings Dropdown -->
@@ -50,6 +85,7 @@ new class extends Component
                             @else
                                 <span class="fa fa-user-circle-o nav-profile-pic"></span>
                             @endif
+
                             <div x-data="{{ json_encode(['name' => auth()->user()->name]) }}" x-text="name" x-on:profile-updated.window="name = $event.detail.name"></div>
 
                             <div class="ms-1">
@@ -63,6 +99,10 @@ new class extends Component
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
                             {{ __('Profile') }}
+                        </x-dropdown-link>
+
+                        <x-dropdown-link :href="route('dashboard')" wire:navigate>
+                            {{ __('Dashboard') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -123,50 +163,4 @@ new class extends Component
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/user-show.css') }}">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div id="content" class="content content-full-width">
-                    <!-- begin profile -->
-                    <div class="profile">
-                        <div class="profile-header">
-                            <!-- BEGIN profile-header-tab -->
-                            <ul class="profile-header-tab nav nav-tabs">
-                                <li class="nav-item">
-                                    <!-- <a href="{{ route('chirps') }}" target="__blank" class="nav-link_" :active="request()->routeIs('chirps')">
-                                        POSTS
-                                    </a> -->
-
-                                    <x-nav-link :href="route('chirps')" :active="request()->routeIs('chirps')" wire:navigate>
-                                        {{ __('POSTS') }}
-                                    </x-nav-link>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">
-                                        VIDEOS
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a href="https://www.bootdey.com/snippets/view/profile-photos" target="__blank" class="nav-link_">
-                                        PLAYLISTS
-                                    </a>
-                                </li>
-                                
-                                <li class="nav-item">
-                                    <a href="https://www.bootdey.com/snippets/view/profile-videos" target="__blank" class="nav-link_">
-                                        EVENTS
-                                    </a>
-                                </li>
-                            </ul>
-                            <!-- END profile-header-tab -->
-                        </div>
-                    </div>
-                    <!-- end profile -->
-                </div>
-            </div>
-        </div>
-    </div>
 </nav>
