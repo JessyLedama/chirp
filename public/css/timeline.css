@@ -8,3 +8,10 @@
     font-size: 62px;
     margin-right: 10px;
 }
+
+.comment-btn{
+    background-color: #242a30;
+    color: #fff;
+    padding: 5px 5px 5px 5px;
+    border-radius: 5px;
+}

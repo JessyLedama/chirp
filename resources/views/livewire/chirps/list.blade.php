@@ -57,12 +57,12 @@ new class extends Component {
             <!-- begin timeline-time -->
             <div class="timeline-time">
                 <span class="date">
-                    {{ $chirp->created_at->format('j M Y') }}
+                    {{ $chirp->created_at->diffForHumans() }}
                 </span>
                 
-                <span class="time">
-                    {{ $chirp->created_at->format('g:i a') }}
-                </span>
+                <!-- <span class="time">
+                    {{ $chirp->created_at->format('j M Y') }}
+                </span> -->
 
                 @unless ($chirp->created_at->eq($chirp->updated_at))
                     <small class="text-sm text-gray-600"> 
@@ -129,38 +129,69 @@ new class extends Component {
 
                 <div class="timeline-likes">
                     <div class="stats-right">
-                        <span class="stats-text">259 Shares</span>
-                        <span class="stats-text">21 Comments</span>
+                        <span class="stats-text">
+                            259 Shares
+                        </span>
+                        
+                        <span class="stats-text">
+                            21 Comments
+                        </span>
                     </div>
+
                     <div class="stats">
                         <span class="fa-stack fa-fw stats-icon">
-                        <i class="fa fa-circle fa-stack-2x text-danger"></i>
-                        <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
+                            <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                            <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
                         </span>
+
                         <span class="fa-stack fa-fw stats-icon">
-                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                            <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
                         </span>
-                        <span class="stats-total">4.3k</span>
+                        <span class="stats-total">
+                            4.3k
+                        </span>
                     </div>
                 </div>
+
                 <div class="timeline-footer">
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> Like</a>
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-comments fa-fw fa-lg m-r-3"></i> Comment</a> 
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter"><i class="fa fa-share fa-fw fa-lg m-r-3"></i> Share</a>
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
+                        <i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> 
+                        Like
+                    </a>
+                    
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
+                        <i class="fa fa-comments fa-fw fa-lg m-r-3"></i>
+                        Comment
+                    </a> 
+                    
+                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
+                        <i class="fa fa-share fa-fw fa-lg m-r-3"></i> 
+                        Share
+                    </a>
 
                     <span class="pull-right text-muted">
                         18 Views
                     </span>
                 </div>
+
                 <div class="timeline-comment-box">
-                    <div class="user"><img src="https://bootdey.com/img/Content/avatar/avatar3.png"></div>
+                    <div class="user">
+                        @if(!$chirp->user->image == null)
+                            <span class="userimage">
+                                <img src="{{ asset('/storage/'.$chirp->user->image) }}" alt="">
+                            </span>
+                        @else
+                            <span class="fa fa-user-circle-o tl-no-profile-pic"></span>
+                        @endif
+                    </div>
+                    
                     <div class="input">
                         <form action="">
                         <div class="input-group">
                             <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">
                             <span class="input-group-btn p-l-10">
-                            <button class="btn btn-primary f-s-12 rounded-corner" type="button">Comment</button>
+                            <button class="btn btn-primary comment-btn f-s-12 rounded-corner" type="button">Comment</button>
                             </span>
                         </div>
                         </form>
