@@ -16,7 +16,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-Route::get('chirps', [ChirpController::class, 'index'])->middleware(['auth', 'verified'])->name('chirps');
+Route::get('posts', [ChirpController::class, 'index'])->middleware(['auth', 'verified'])->name('chirps');
 
 Route::get('{name}', [UserController::class, 'show'])->middleware(['auth'])->name('user.show');
 

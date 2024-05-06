@@ -18,6 +18,9 @@
         <link rel="stylesheet" href="{{ asset('/css/navigation.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/timeline.css') }}">
 
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
