@@ -69,6 +69,16 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('edit/{slug}', [VideoCategoryController::class, 'edit'])->name('admin.categories.edit');
         Route::post('edit/{slug}', [VideoCategoryController::class, 'update'])->name('admin.categories.update');
     });
+
+    // CATEGORIES
+    Route::prefix('videos')->group(function(){
+        Route::get('/', [VideoController::class, 'index'])->name('admin.videos.index');
+        Route::get('create', [VideoController::class, 'create'])->name('admin.videos.create');
+        Route::get('/{slug}', [VideoController::class, 'show'])->name('admin.videos.show');
+        Route::post('/{slug}', [VideoController::class, 'store'])->name('admin.videos.store');
+        Route::get('edit/{slug}', [VideoController::class, 'edit'])->name('admin.videos.edit');
+        Route::post('edit/{slug}', [VideoController::class, 'update'])->name('admin.videos.update');
+    });
 });
 
 Route::post('logout', [UserController::class, 'destroy'])->name('logout');
