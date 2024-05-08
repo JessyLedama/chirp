@@ -18,7 +18,7 @@ Route::view('profile', 'profile')
 
 Route::get('posts', [ChirpController::class, 'index'])->middleware(['auth', 'verified'])->name('chirps');
 
-Route::get('{name}', [UserController::class, 'show'])->middleware(['auth'])->name('user.show');
+Route::get('user/{name}', [UserController::class, 'show'])->middleware(['auth'])->name('user.show');
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     // STATUS

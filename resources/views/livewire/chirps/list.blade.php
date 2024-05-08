@@ -90,7 +90,7 @@ new class extends Component {
                     @endif
                     
                     <span class="username">
-                        <a href="javascript:;">
+                        <a href="{{ route('user.show', $chirp->user->name) }}">
                             {{ ucfirst($chirp->user->name) }}
                         </a> 
                         <small></small>
@@ -159,6 +159,15 @@ new class extends Component {
                         <i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> 
                         Like
                     </a>
+
+                    <form action="">
+                        <div class="input-group">
+                            <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">
+                            <span class="input-group-btn p-l-10">
+                            <button class="btn btn-primary comment-btn f-s-12 rounded-corner" type="button">Comment</button>
+                            </span>
+                        </div>
+                    </form>
                     
                     <a href="javascript:;" class="m-r-15 text-inverse-lighter">
                         <i class="fa fa-comments fa-fw fa-lg m-r-3"></i>
