@@ -39,4 +39,8 @@
   .dropdown:hover .dropbtn {
     background-color: #e5e7eb;
   }
+
+  .views{
+    margin: -23px 0 0 0;
+  }
   

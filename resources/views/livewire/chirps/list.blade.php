@@ -205,13 +205,13 @@ new class extends Component {
                         @endforeach
                     </div>
 
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
+                    <!-- <a href="javascript:;" class="m-r-15 text-inverse-lighter">
                         <i class="fa fa-share fa-fw fa-lg m-r-3"></i> 
                         Share
-                    </a>
+                    </a> -->
                 </div>
 
-                <span class="pull-right text-muted">
+                <span class="pull-right text-muted views">
                     18 Views
                 </span>
             </div>
