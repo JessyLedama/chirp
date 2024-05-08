@@ -2,6 +2,7 @@
 
 use function Livewire\Volt\Component;
 use Illuminate\Http\Request;
+use App\Services\LikeChirpService;
 
 new class extends Component
 {

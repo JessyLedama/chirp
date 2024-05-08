@@ -17,6 +17,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="{{ asset('/css/navigation.css') }}">
         <link rel="stylesheet" href="{{ asset('/css/timeline.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/chirps.css') }}">
 
         <!-- Favicon -->
         <link rel="shortcut icon" href="{{ asset('images/logo.png') }}" type="image/x-icon">

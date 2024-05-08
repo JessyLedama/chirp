@@ -18,7 +18,7 @@ new class extends Component {
 
     public function getChirps(): void
     {
-        $this->chirps = Chirp::with(['user', 'likes'])->latest()->get();
+        $this->chirps = Chirp::with(['user', 'likes', 'comments'])->latest()->get();
     } 
 
     public function edit(Chirp $chirp): void
@@ -134,7 +134,7 @@ new class extends Component {
                         </span>
                         
                         <span class="stats-text">
-                            21 Comments
+                            {{ count($chirp->comments) }} Comments
                         </span>
                     </div>
 
@@ -149,12 +149,12 @@ new class extends Component {
                             <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
                         </span>
                         <span class="stats-total">
-                            4.3k
+                            {{ count($chirp->likes) }}
                         </span>
                     </div>
                 </div>
 
-                <div class="timeline-footer">
+                <div class="timeline-footer">                    
                     @php 
                         $chirpData = [
                             'chirp_id' => $chirp->id,
@@ -175,52 +175,45 @@ new class extends Component {
                         </form>
                     @endif
 
-                    <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">
-                            <span class="input-group-btn p-l-10">
-                            <button class="btn btn-primary comment-btn f-s-12 rounded-corner" type="button">Comment</button>
-                            </span>
+                    <div class="timeline-comment-box">
+                        <div class="user">
+                            @if(!$chirp->user->image == null)
+                                <span class="userimage">
+                                    <img src="{{ asset('/storage/'.$chirp->user->image) }}" alt="">
+                                </span>
+                            @else
+                                <span class="fa fa-user-circle-o tl-no-profile-pic"></span>
+                            @endif
                         </div>
-                    </form>
                     
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
+                        <livewire:comment.create :chirpId="$chirp->id"/>
+                </div>
+                       
+                <!-- Comments -->
+                <div class="dropdown">
+                    <a class="dropbtn m-r-15 text-inverse-lighter">
                         <i class="fa fa-comments fa-fw fa-lg m-r-3"></i>
-                        Comment
-                    </a> 
+                        Comments
+                        <span class="fa fa-caret-down"></span>
+                    </a>
                     
+                    <div class="dropdown-content">
+                        @foreach($chirp->comments as $comment)
+                            <a href="#">
+                                {{ $comment->comment }}
+                            </a>
+                        @endforeach
+                    </div>
+
                     <a href="javascript:;" class="m-r-15 text-inverse-lighter">
                         <i class="fa fa-share fa-fw fa-lg m-r-3"></i> 
                         Share
                     </a>
-
-                    <span class="pull-right text-muted">
-                        18 Views
-                    </span>
                 </div>
 
-                <div class="timeline-comment-box">
-                    <div class="user">
-                        @if(!$chirp->user->image == null)
-                            <span class="userimage">
-                                <img src="{{ asset('/storage/'.$chirp->user->image) }}" alt="">
-                            </span>
-                        @else
-                            <span class="fa fa-user-circle-o tl-no-profile-pic"></span>
-                        @endif
-                    </div>
-                    
-                    <div class="input">
-                        <form action="">
-                        <div class="input-group">
-                            <input type="text" class="form-control rounded-corner" placeholder="Write a comment...">
-                            <span class="input-group-btn p-l-10">
-                            <button class="btn btn-primary comment-btn f-s-12 rounded-corner" type="button">Comment</button>
-                            </span>
-                        </div>
-                        </form>
-                    </div>
-                </div>
+                <span class="pull-right text-muted">
+                    18 Views
+                </span>
             </div>
             <!-- end timeline-body -->
         </li>

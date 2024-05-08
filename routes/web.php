@@ -5,6 +5,7 @@ use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LikeChirpsController;
+use App\Http\Controllers\CommentController;
 
 
 Route::view('/', 'welcome');
@@ -20,6 +21,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('user/{name}', [UserController::class, 'show'])->name('user.show');
 
     Route::post('likechirp', [LikeChirpsController::class, 'store'])->name('likechirp');
+
+    Route::post('comment/{chirp}', [CommentController::class, 'store'])->name('comment.chirp');
 });
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){

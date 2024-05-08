@@ -33,4 +33,10 @@ class Chirp extends Model
         return $this->hasMany(LikeChirps::class);
     }
 
+    // chirp hasMany comments
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }
