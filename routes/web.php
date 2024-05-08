@@ -4,21 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LikeChirpsController;
 
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// AUTHENTICATED ROUTES
+Route::middleware(['auth', 'verified'])->group(function(){
+    Route::view('dashboard', 'dashboard')->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+    Route::view('profile', 'profile')->name('profile');
 
-Route::get('posts', [ChirpController::class, 'index'])->middleware(['auth', 'verified'])->name('chirps');
+    Route::get('posts', [ChirpController::class, 'index'])->name('chirps');
 
-Route::get('user/{name}', [UserController::class, 'show'])->middleware(['auth'])->name('user.show');
+    Route::get('user/{name}', [UserController::class, 'show'])->name('user.show');
+
+    Route::post('likechirp', [LikeChirpsController::class, 'store'])->name('likechirp');
+});
 
 Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
     // STATUS

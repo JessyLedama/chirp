@@ -26,4 +26,11 @@ class Chirp extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    // chirp hasMany likes
+    public function likes()
+    {
+        return $this->hasMany(LikeChirps::class);
+    }
+
 }

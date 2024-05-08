@@ -4,6 +4,7 @@ use App\Models\Chirp;
 use Illuminate\Database\Eloquent\Collection; 
 use Livewire\Attributes\On; 
 use Livewire\Volt\Component;
+use App\Services\LikeChirpService;
 
 new class extends Component {
     public Collection $chirps; 
@@ -17,8 +18,7 @@ new class extends Component {
 
     public function getChirps(): void
     {
-        $this->chirps = Chirp::with('user')->latest()->get();
-
+        $this->chirps = Chirp::with(['user', 'likes'])->latest()->get();
     } 
 
     public function edit(Chirp $chirp): void
@@ -155,10 +155,25 @@ new class extends Component {
                 </div>
 
                 <div class="timeline-footer">
-                    <a href="javascript:;" class="m-r-15 text-inverse-lighter">
-                        <i class="fa fa-thumbs-up fa-fw fa-lg m-r-3"></i> 
-                        Like
-                    </a>
+                    @php 
+                        $chirpData = [
+                            'chirp_id' => $chirp->id,
+                            'user_id' => Auth::id(),
+                        ];
+                    @endphp
+
+                    @if(LikeChirpService::liked($chirpData) == true)
+                        <span class="fa fa-thumbs-up"></span>
+                    @else
+                        <form id="likeForm" action="{{ route('likechirp') }}" method="post">
+                            @csrf 
+                            <input type="hidden" name="chirp_id" value="{{ $chirp->id }}">
+
+                            <span class="fa fa-thumbs-up"></span>
+
+                            <input id="likeButton" type="submit" value="Like">
+                        </form>
+                    @endif
 
                     <form action="">
                         <div class="input-group">
@@ -210,6 +225,28 @@ new class extends Component {
             <!-- end timeline-body -->
         </li>
     @endforeach
+
+    <script>
+        $(document).ready(function(){
+            $('#likeButton').click(function(e){
+                e.preventDefault();
+                var formData = $('#likeForm').serialize();
+
+                $.ajax({
+                    url: 'likechirp',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response){
+                        alert('You like this post');
+                    },
+                    error: function(xhr, status, error){
+                        alert('Failed')
+                        console.error(error);
+                    }
+                });
+            });
+        });
+    </script>
 </ul>
 <!-- end timeline -->
 

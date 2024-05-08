@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\LikeChirps;
 use Illuminate\Http\Request;
+use Auth;
+use App\Services\LikeChirpService;
 
 class LikeChirpsController extends Controller
 {
@@ -12,7 +14,15 @@ class LikeChirpsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'chirp_id' => ['string'],
+        ]);
+
+        $validated['user_id'] = Auth::id();
+
+        $like = LikeChirpService::store($validated);
+
+        return back();
     }
 
     /**

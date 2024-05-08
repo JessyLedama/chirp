@@ -1,6 +1,6 @@
 <?php
 
-use function Livewire\Volt\Component;
+use Livewire\Volt\Component;
 use Illuminate\Http\Request;
 use App\Models\LikeChirps;
 
@@ -14,17 +14,18 @@ new class extends Component
     {
         $this->likechirps = $likechirps;
         $this->chirpId = $chirpId;
-        public->hasLiked = $hasLiked;
+        $this->hasLiked = $hasLiked;
     }
 
     public function store(): void
     {
         $validated = $this->validate(
             [
-                'message' => ['required', 'string', 'max:255']
-            ]);
+                'chirp_id' => ['required', 'string', 'max:255'],
+            ]
+        );
 
-        auth()->user()->chirps()->create($validated);
+        auth()->user()->likechirps()->create($validated);
 
         $this->message = '';
 
@@ -36,9 +37,9 @@ new class extends Component
 
 <div>
     <form class="post-chirp" wire:submit="store"> 
-        <textarea wire:model="message" placeholder="{{ __('What say you?') }}" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"></textarea>
+        <!-- <input wire:model="message" placeholder="{{ __('What say you?') }}" class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"/>
 
-        <x-input-error :messages="$errors->get('message')" class="mt-2" />
+        <x-input-error :messages="$errors->get('message')" class="mt-2" /> -->
 
         <x-primary-button class="mt-4">{{ __('Post') }}</x-primary-button>
     </form> 
