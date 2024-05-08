@@ -48,7 +48,7 @@ new class extends Component
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a href="https://www.bootdey.com/snippets/view/bs4-profile-about" target="__blank" class="nav-link_">
+                                    <a href="{{ route('videos') }}">
                                         VIDEOS
                                     </a>
                                 </li>

@@ -1,0 +1,19 @@
+.dashboard-container{
+    max-width: 80rem;
+    background-color: #fff;
+    margin: 0 0 0 44px;
+    padding: 14px 0 14px 21px;
+}
+
+.dashboard-content{
+    background-color: red;
+    max-width: 21rem;
+}
+
+.title{
+
+}
+
+.dashboard-item{
+    
+}
