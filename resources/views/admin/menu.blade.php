@@ -96,7 +96,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a class="admin-link" href="javascript:;">
                                     <i class="fa fa-book"></i>
                                     <span>
-                                        Video Categories
+                                        Categories
                                     </span>
                                 </a>
 
@@ -110,6 +110,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <li>
                                         <a class="admin-link" href="{{ route('admin.categories.create') }}">
                                             New Video Category
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="sub-menu">
+                                <a class="admin-link" href="javascript:;">
+                                    <i class="fa fa-book"></i>
+                                    <span>
+                                        Sub-Categories
+                                    </span>
+                                </a>
+
+                                <ul class="sub">
+                                    <li>
+                                        <a class="admin-link" href="{{ route('admin.subcategories.index') }}">
+                                            All Sub-Categories
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a class="admin-link" href="{{ route('admin.subcategories.create') }}">
+                                            New Sub-Category
                                         </a>
                                     </li>
                                 </ul>

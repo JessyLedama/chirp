@@ -10,6 +10,7 @@ use App\Http\Controllers\VideoController;
 use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubcategoryController;
 
 
 Route::view('/', 'welcome');
@@ -61,7 +62,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
         Route::get('create', [UserController::class, 'create'])->name('admin.users.create');
         Route::get('/{slug}', [UserController::class, 'show'])->name('admin.users.show');
-        Route::post('/{slug}', [UserController::class, 'store'])->name('admin.users.store');
+        Route::post('users/{slug}', [UserController::class, 'store'])->name('admin.users.store');
         Route::get('edit/{slug}', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::post('edit/{slug}', [UserController::class, 'update'])->name('admin.users.update');
     });
@@ -71,9 +72,19 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::get('/', [VideoCategoryController::class, 'index'])->name('admin.categories.index');
         Route::get('create', [VideoCategoryController::class, 'create'])->name('admin.categories.create');
         Route::get('/{slug}', [VideoCategoryController::class, 'show'])->name('admin.categories.show');
-        Route::post('/{slug}', [VideoCategoryController::class, 'store'])->name('admin.categories.store');
+        Route::post('/store/', [VideoCategoryController::class, 'store'])->name('admin.categories.store');
         Route::get('edit/{slug}', [VideoCategoryController::class, 'edit'])->name('admin.categories.edit');
         Route::post('edit/{slug}', [VideoCategoryController::class, 'update'])->name('admin.categories.update');
+    });
+
+    // SUBCATEGORIES
+    Route::prefix('subcategories')->group(function(){
+        Route::get('/', [SubcategoryController::class, 'index'])->name('admin.subcategories.index');
+        Route::get('create', [SubcategoryController::class, 'create'])->name('admin.subcategories.create');
+        Route::get('/{slug}', [SubcategoryController::class, 'show'])->name('admin.subcategories.show');
+        Route::post('/store/', [SubcategoryController::class, 'store'])->name('admin.subcategories.store');
+        Route::get('edit/{slug}', [SubcategoryController::class, 'edit'])->name('admin.subcategories.edit');
+        Route::post('edit/{slug}', [SubcategoryController::class, 'update'])->name('admin.subcategories.update');
     });
 
     // VIDEOS

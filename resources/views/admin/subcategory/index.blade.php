@@ -10,7 +10,13 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
 
-                    <a href="{{ route('admin.categories.create') }}" class="btn btn-sm btn-default new-button">
+                    @if (session()->has('success'))
+                        <span class="alert alert-success">
+                            {{ session('success') }}
+                        </span>
+                    @endif
+
+                    <a href="{{ route('admin.subcategories.create') }}" class="btn btn-sm btn-default new-button">
                         New
                     </a>
 
@@ -53,28 +59,32 @@
 
             <div class="table-responsive">
                 <table class="table table-striped b-t b-light">
-                    @if(!$categories->isEmpty())
-                        @foreach($categories as $category)
-                            <thead>
-                                <tr>
-                                    <th style="width:20px;">
-                                        <label class="i-checks m-b-none">
-                                            <input type="checkbox"><i></i>
-                                        </label>
-                                    </th>
-                                    
-                                    <th>
-                                        Name
-                                    </th>
-                                    
-                                    <th>
-                                        Create Date
-                                    </th>
-                                </tr>
-                            </thead>
+                    
+                    <thead>
+                        <tr>
+                            <th style="width:20px;">
+                                <label class="i-checks m-b-none">
+                                    <input type="checkbox"><i></i>
+                                </label>
+                            </th>
+                            
+                            <th>
+                                Name
+                            </th>
 
-                            <tbody>
-                        
+                            <th>
+                                Category
+                            </th>
+                            
+                            <th>
+                                Create Date
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @if(!$subcategories->isEmpty())
+                            @foreach($subcategories as $subcategory)
                                 <tr>
                                     <td>
                                         <label class="i-checks m-b-none">
@@ -84,25 +94,28 @@
                                     </td>
                                     
                                     <td>
-                                        {{ ucfirst($category->name) }}
+                                        {{ ucfirst($subcategory->name) }}
+                                    </td>
+
+                                    <td>
+                                        {{ ucfirst($subcategory->category->name) }}
                                     </td>
                                     
                                     <td>
                                         <span class="text-ellipsis">
-                                            {{ $category->created_at }}
+                                            {{ $subcategory->created_at }}
                                         </span>
                                     </td>
                                 </tr>
-                            
-                            </tbody>
-                        @endforeach
-                    @else
-                        <tr>
-                            <td>
-                                No categories to show at this time.
-                            </td>
-                        </tr>
-                    @endif
+                            @endforeach
+                        @else
+                            <tr>
+                                <td>
+                                    No subcategories to show at this time.
+                                </td>
+                            </tr>
+                        @endif
+                    </tbody>
                 </table>
             </div>
             <footer class="panel-footer">

@@ -40,7 +40,7 @@ class VideoCategoryController extends Controller
 
         session()->flash('success', 'Category saved!');
 
-        return redirect()->route('admin.videoCategory.index');
+        return redirect()->route('admin.categories.index');
     }
 
     /**
