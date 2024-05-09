@@ -12,7 +12,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = UserService::users();
+        
+        return view('admin.users.index', compact('users'));
     }
 
     /**

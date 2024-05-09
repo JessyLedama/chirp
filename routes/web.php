@@ -57,7 +57,7 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::post('edit/{slug}', [StatusController::class, 'update'])->name('admin.roles.update');
     });
 
-    // USER
+    // USERS
     Route::prefix('users')->group(function(){
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
         Route::get('create', [UserController::class, 'create'])->name('admin.users.create');

@@ -32,3 +32,8 @@
 .thumbs{
     max-width: 200px;
 }
+
+.user-thumbnail{
+    max-width: 50px;
+    border-radius: 50%;
+}
