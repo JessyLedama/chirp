@@ -55,7 +55,7 @@ class VideoService
             'slug' => $slug,
             'thumbnail' => $thumbnail ?? '',
             'link' => $validated['link'],
-            'category_id' =>$validated['category_id'],
+            'subcategory_id' =>$validated['subcategory_id'],
             'preview' => $validated['preview'],
         ];
 
@@ -185,6 +185,14 @@ class VideoService
     
         } while ($nextPageToken);
     
+        return $videos;
+    }
+
+    // get a random set of 5 videos
+    public static function random()
+    {
+        $videos = Video::inRandomOrder()->take(5)->get();
+
         return $videos;
     }
 }

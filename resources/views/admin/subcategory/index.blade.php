@@ -9,13 +9,6 @@
 		<div class="table-agile-info">
             <div class="panel panel-default">
                 <div class="panel-heading">
-
-                    @if (session()->has('success'))
-                        <span class="alert alert-success">
-                            {{ session('success') }}
-                        </span>
-                    @endif
-
                     <a href="{{ route('admin.subcategories.create') }}" class="btn btn-sm btn-default new-button">
                         New
                     </a>
@@ -23,7 +16,10 @@
                     Categories
                 </div>
 
+
+
                 <div class="row w3-res-tb">
+                    
                     <div class="col-sm-5 m-b-xs">
                         <select class="input-sm form-control w-sm inline v-middle">
                             <option value="0">
@@ -58,6 +54,13 @@
             </div>
 
             <div class="table-responsive">
+                <div>
+                    @if (session()->has('success'))
+                        <span class="alert alert-success">
+                            {{ session('success') }}
+                        </span>
+                    @endif
+                </div>
                 <table class="table table-striped b-t b-light">
                     
                     <thead>

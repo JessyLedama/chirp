@@ -9,17 +9,17 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'thumbnail', 'link', 'category_id', 'preview'];
+    protected $fillable = ['name', 'slug', 'thumbnail', 'link', 'subcategory_id', 'preview'];
 
     // a $video belongsTo() a $category
-    public function category()
+    public function subcategory()
     {
-        return $this->belongsTo(VideoCategory::class, 'category_id');
+        return $this->belongsTo(Subcategory::class, 'subcategory_id');
     }
 
     // a video may hasMany() comments
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'chirp_id');
     }
 }

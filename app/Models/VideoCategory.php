@@ -12,8 +12,8 @@ class VideoCategory extends Model
     protected $fillable = ['name', 'slug', 'parent', 'status_id'];
 
     // a category hasMany() $videos
-    public function videos()
+    public function subcategories()
     {
-        return $this->hasMany(Video::class, 'category_id');
+        return $this->hasMany(Subcategory::class, 'category_id');
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\VideoService;
 use App\Services\SlideshowService;
 use App\Services\VideoCategoryService;
+use App\Services\SubcategoryService;
 
 class VideoController extends Controller
 {
@@ -25,7 +26,7 @@ class VideoController extends Controller
      */
     public function create()
     {
-        $categories = VideoCategoryService::all();
+        $categories = SubcategoryService::subcategories();
 
         return view('admin.video.create', compact('categories'));
     }
@@ -37,17 +38,17 @@ class VideoController extends Controller
     {
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'thumbnail' => ['image', 'mimes:jpg,jpeg,png,gif'],
+            'thumbnail' => ['image', 'mimes:jpg,jpeg,png,gif', 'max:30000'],
             'link' => ['required', 'url'],
             'preview' => ['required', 'url'],
-            'category_id' => ['required', 'string'],
+            'subcategory_id' => ['required', 'string'],
         ]);
 
         VideoService::store($validated);
 
         session()->flash('success', 'Video stored successfully.');
 
-        return redirect()->route('admin.video.index');
+        return redirect()->route('admin.videos.index');
     }
 
     /**
@@ -57,7 +58,9 @@ class VideoController extends Controller
     {
         $video = VideoService::searchBySlug($slug);
 
-        return view('admin.video.show', compact('video'));
+        $more = VideoService::random();
+
+        return view('admin.video.show', compact('video', 'more'));
     }
 
     /**

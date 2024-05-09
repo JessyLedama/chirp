@@ -1619,10 +1619,10 @@ ul.bs-glyphicons-list {
 .w3ls_head {
     font-size: 30px;
     color: #000000;
-    margin-bottom: 2em;
     letter-spacing: 2px;
     text-transform: uppercase;
-    text-align: center;
+    text-align: left;
+    margin-left: 10px;
 }
 .agile-grid{
 	background: #eef9f0;
