@@ -84,7 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     <div class="leftside-navigation">
                         <ul class="sidebar-menu" id="nav-accordion">
                             <li>
-                                <a class="active" href="{{ route('dashboard') }}">
+                                <a id="dash" class="admin-link" href="{{ route('dashboard') }}">
                                     <i class="fa fa-dashboard"></i>
                                     <span>
                                         Dashboard
@@ -93,7 +93,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
                             
                             <li class="sub-menu">
-                                <a href="javascript:;">
+                                <a class="admin-link" href="javascript:;">
                                     <i class="fa fa-book"></i>
                                     <span>
                                         Video Categories
@@ -102,13 +102,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <ul class="sub">
                                     <li>
-                                        <a href="{{ route('admin.categories.index') }}">
+                                        <a class="admin-link" href="{{ route('admin.categories.index') }}">
                                             All Video Categories
                                         </a>
                                     </li>
                                     
                                     <li>
-                                        <a href="{{ route('admin.categories.create') }}">
+                                        <a class="admin-link" href="{{ route('admin.categories.create') }}">
                                             New Video Category
                                         </a>
                                     </li>
@@ -125,13 +125,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                 <ul class="sub">
                                     <li>
-                                        <a href="{{ route('admin.videos.index') }}">
+                                        <a class="admin-link" href="{{ route('admin.videos.index') }}">
                                             All Videos
                                         </a>
                                     </li>
                                     
                                     <li>
-                                        <a href="{ route('admin.videos.create') }}">
+                                        <a class="admin-link" href="{ route('admin.videos.create') }}">
                                             New Video
                                         </a>
                                     </li>
@@ -139,21 +139,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             </li>
 
                             <li>
-                                <a href="{{ route('admin.orders.index') }}">
+                                <a class="admin-link" href="{{ route('admin.orders.index') }}">
                                     <i class="fa fa-shopping-cart"></i>
                                     Orders
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{ route('admin.users.index') }}">
+                                <a class="admin-link" href="{{ route('admin.users.index') }}">
                                     <i class="fa fa-users"></i>
                                     Members
                                 </a>
                             </li>
 
                             <li>
-                                <a href="{{ route('chirps') }}">
+                                <a class="admin-link" href="{{ route('chirps') }}">
                                     <i class="fa fa-home"></i>
                                     <span>Home Page</span>
                                 </a>

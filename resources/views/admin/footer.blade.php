@@ -109,5 +109,29 @@
             });
         </script>
         <!-- //calendar -->
+
+        <!-- Highlight current page in sidebar -->
+        <script>
+            // Get the current URL path
+            var path = window.location.pathname;
+
+            // Get all the links in the navigation
+            var links = document.getElementsByClassName("admin-link");
+
+            // Loop through each link
+            for (var i = 0; i < links.length; i++) {
+                // Get the href attribute of the link
+                var href = links[i].getAttribute("href");
+                
+                // Extract the pathname from the href attribute
+                var pathname = (new URL(href, window.location.origin)).pathname;
+
+                // Check if the href matches the current page
+                if (pathname === path) {
+                    // Add the 'active' class to the link
+                    links[i].classList.add("active");
+                }
+            }
+        </script>
     </body>
 </html>
