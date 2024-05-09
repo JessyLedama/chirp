@@ -1,24 +1,6 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css')}}">
 <x-app-layout>
-
-	<!-- banner -->
-	<div id="slidey" style="display:none;">
-		<ul>
-			@foreach($slides as $slide)
-				<li>
-					<img src="{{ asset('/storage/'.$slide->image) }}" alt="Slide: {{ $slide->name }}">
-					
-					<p class='title'>
-						{{ ucwords( $slide->name )}}
-					</p>
-					
-					<p class='description'> 
-						{{ ucfirst($slide->description) }}
-					</p>
-				</li>
-			@endforeach
-		</ul>   	
-    </div>
+	@include('carousel')
     
 	<!-- banner-bottom -->
 	<div class="banner-bottom">
@@ -29,14 +11,14 @@
 						<div class="item">
 							<div class="w3l-movie-gride-agile w3l-movie-gride-agile1">
 								
-								<a href="{{ route('video', $video->slug) }}" class="hvr-shutter-out-horizontal">
+								<a href="{{ route('video.show', $video->slug) }}" class="hvr-shutter-out-horizontal">
 									<img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
 								</a>
 
 								<div class="mid-1 agileits_w3layouts_mid_1_home">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="{{ route('video', $video->slug) }}">
+											<a href="{{ route('video.show', $video->slug) }}">
 												{{ ucwords($video->name) }}
 											</a>
 										</h6>							
@@ -83,23 +65,29 @@
 					<!-- Featured Videos -->
 					<div role="tabpanel" class="tab-pane fade active in" id="featured" aria-labelledby="featured-tab">
 						<div class="w3_agile_featured_movies">
-							@foreach($featured as $video)
-								<div class="col-md-2 content">
-									<a href="{{ route('video', $video->slug) }}" class="hvr-shutter-out-horizontal">
-										<img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
-									</a>
+							@if(!$featured == null)
+								@foreach($featured as $video)
+									<div class="col-md-2 content">
+										<a href="{{ route('video.show', $video->slug) }}" class="hvr-shutter-out-horizontal">
+											<img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
+										</a>
 
-									<div class="mid-1 agileits_w3layouts_mid_1_home">
-										<div class="w3l-movie-text">
-											<h6>
-												<a href="{{ route('video', $video->slug) }}">
-													{{ $video->name }}
-												</a>
-											</h6>							
+										<div class="mid-1 agileits_w3layouts_mid_1_home">
+											<div class="w3l-movie-text">
+												<h6>
+													<a href="{{ route('video.show', $video->slug) }}">
+														{{ $video->name }}
+													</a>
+												</h6>							
+											</div>
 										</div>
 									</div>
-								</div>
-							@endforeach
+								@endforeach
+							@else
+								<span>
+									You dont have any featured videos
+								</span>
+							@endif
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -108,14 +96,14 @@
 					<div role="tabpanel" class="tab-pane fade" id="topVideos" aria-labelledby="topVideos-tab">
 						@foreach($topVideos as $video)
 							<div class="col-md-2 content">
-								<a href="{{ route('video', $video->slug) }}" class="hvr-shutter-out-horizontal">
+								<a href="{{ route('video.show', $video->slug) }}" class="hvr-shutter-out-horizontal">
 									<img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
 								</a>
 
 								<div class="mid-1 agileits_w3layouts_mid_1_home">
 									<div class="w3l-movie-text">
 										<h6>
-											<a href="{{ route('video', $video->slug) }}">
+											<a href="{{ route('video.show', $video->slug) }}">
 												{{ $video->name }}
 											</a>
 										</h6>							
@@ -131,7 +119,7 @@
                         @if(!$latestVideos == null)
                             @foreach($latestVideos as $video)
                                 <div class="col-md-2 content">
-                                    <a href="{{ route('video', $video->slug) }}" class="hvr-shutter-out-horizontal">
+                                    <a href="{{ route('video.show', $video->slug) }}" class="hvr-shutter-out-horizontal">
                                         <img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
                                     </a>
                                     <div class="mid-1 agileits_w3layouts_mid_1_home">
@@ -170,14 +158,14 @@
 			<div class="w3_agile_featured_movies">
 				@foreach($topVideos as $video)
 					<div class="col-md-2 content">
-						<a href="{{ route('video', $video->slug) }}" class="hvr-shutter-out-horizontal">
+						<a href="{{ route('video.show', $video->slug) }}" class="hvr-shutter-out-horizontal">
 							<img src="{{ asset('/storage/'.$video->thumbnail) }}" title="album-name" class="img-responsive" alt="{{ $video->name }} Image" />
 						</a>
 
 						<div class="mid-1 agileits_w3layouts_mid_1_home">
 							<div class="w3l-movie-text">
 								<h6>
-									<a href="{{ route('video', $video->slug) }}">
+									<a href="{{ route('video.show', $video->slug) }}">
 										{{ $video->name }}
 									</a>
 								</h6>							

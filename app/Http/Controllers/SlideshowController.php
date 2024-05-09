@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Slideshow;
+use App\Services\SlideshowService;
 use Illuminate\Http\Request;
 
 class SlideshowController extends Controller
@@ -31,7 +31,6 @@ class SlideshowController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'no' => ['required', 'string', 'max:2', 'unique:slideshows'],
             'image' => ['mimes:jpg,png,gif,jpeg'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string'],
@@ -41,7 +40,7 @@ class SlideshowController extends Controller
 
         session()->flash('success', 'Slide has been stored.');
 
-        return redirect()->route('admin.slideshow.index');
+        return redirect()->route('admin.slides.index');
     }
 
     /**

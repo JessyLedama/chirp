@@ -37,7 +37,7 @@ new class extends Component
 
                 <span class="input-group-btn p-l-10">
                     
-                    <x-primary-button class="mt-4">{{ __('Comment ') }}</x-primary-button>
+                    <x-primary-button class="mt-4 comment-chirp">{{ __('Comment ') }}</x-primary-button>
                 </span>
             </div>
         </form>

@@ -119,4 +119,12 @@ class VideoController extends Controller
 
         return view('videos', compact('categories', 'slides', 'topVideos', 'featured', 'latestVideos'));
     }
+
+    // get select video(non admin)
+    public function video($slug)
+    {
+        $video = VideoService::searchBySlug($slug);
+        
+        return view('video', compact('video'));
+    }
 }

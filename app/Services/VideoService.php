@@ -81,9 +81,19 @@ class VideoService
         //                 ->with(['category'])
         //                 ->get();
 
-        $videos = Video::inRandomOrder()->limit(6)->get();
+        if(!$category == null)
+        {
+            $videos = Video::with(['subcategory'])
+                        ->where('subcategory_id', $category->id)
+                        ->inRandomOrder()
+                        ->limit(6)
+                        ->get();
 
-        return $videos;
+            return $videos;
+        }
+        else{
+            return null;
+        }
     }
 
     // get top videos

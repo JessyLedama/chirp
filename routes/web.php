@@ -11,6 +11,7 @@ use App\Http\Controllers\VideoCategoryController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SubcategoryController;
+use App\Http\Controllers\SlideshowController;
 
 
 Route::view('/', 'welcome');
@@ -29,6 +30,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::post('comment/{chirp}', [CommentController::class, 'store'])->name('comment.chirp');
 
     Route::get('videos', [VideoController::class, 'videos'])->name('videos');
+
+    Route::get('videos/{slug}', [VideoController::class, 'video'])->name('video.show');
 
     Route::post('logout', [UserController::class, 'destroy'])->name('logout');
 });
@@ -105,6 +108,16 @@ Route::prefix('admin')->middleware(['auth', 'verified'])->group(function(){
         Route::post('/{slug}', [OrderController::class, 'store'])->name('admin.orders.store');
         Route::get('edit/{slug}', [OrderController::class, 'edit'])->name('admin.orders.edit');
         Route::post('edit/{slug}', [OrderController::class, 'update'])->name('admin.orders.update');
+    });
+
+    // SLIDES
+    Route::prefix('slides')->group(function(){
+        Route::get('/', [SlideshowController::class, 'index'])->name('admin.slides.index');
+        Route::get('create', [SlideshowController::class, 'create'])->name('admin.slides.create');
+        Route::get('/{slug}', [SlideshowController::class, 'show'])->name('admin.slides.show');
+        Route::post('/', [SlideshowController::class, 'store'])->name('admin.slides.store');
+        Route::get('edit/{slug}', [SlideshowController::class, 'edit'])->name('admin.slides.edit');
+        Route::post('edit/{slug}', [SlideshowController::class, 'update'])->name('admin.slides.update');
     });
 });
 

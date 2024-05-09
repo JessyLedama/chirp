@@ -1,0 +1,17 @@
+.slidey-row .slidey-controls-previous i{
+    top: 10px !important;
+}
+
+.slidey-row .slidey-controls-next i{
+    top: 10px !important;
+}
+
+.popular-section{
+    width: 100%;
+}
+
+.no-results{
+    text-align: center;
+    min-height: 70px;
+    margin-top: 70px;
+}

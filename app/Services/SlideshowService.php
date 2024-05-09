@@ -41,7 +41,6 @@ class SlideshowService
         }
         
         $slideData = [
-            'no' => $validated['no'],
             'name' => $validated['name'],
             'image' => $image ?? '',
             'description' => $validated['description'],

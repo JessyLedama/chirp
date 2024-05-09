@@ -96,6 +96,29 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 <a class="admin-link" href="javascript:;">
                                     <i class="fa fa-book"></i>
                                     <span>
+                                        Slides
+                                    </span>
+                                </a>
+
+                                <ul class="sub">
+                                    <li>
+                                        <a class="admin-link" href="{{ route('admin.slides.index') }}">
+                                            All Slides
+                                        </a>
+                                    </li>
+                                    
+                                    <li>
+                                        <a class="admin-link" href="{{ route('admin.slides.create') }}">
+                                            New Slide
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li class="sub-menu">
+                                <a class="admin-link" href="javascript:;">
+                                    <i class="fa fa-book"></i>
+                                    <span>
                                         Categories
                                     </span>
                                 </a>

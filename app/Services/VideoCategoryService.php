@@ -11,7 +11,7 @@ class VideoCategoryService
     // get all categories
     public static function all()
     {
-        $categories = VideoCategory::with(['subcategories'])->get();
+        $categories = VideoCategory::with(['subcategories.videos'])->get();
 
         return $categories;
     }
