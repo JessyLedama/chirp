@@ -1,1 +1,1 @@
-{{ $statuses }}
+{{ $categories }}

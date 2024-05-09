@@ -40,4 +40,12 @@ class UserService
 
         return $user;
     }
+
+    // get the current count of users
+    public static function count()
+    {
+        $count = User::count();
+
+        return $count;
+    }
 }

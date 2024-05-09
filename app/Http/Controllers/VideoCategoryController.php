@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\VideoCategory;
 use Illuminate\Http\Request;
+use App\Services\VideoCategoryService;
 
 class VideoCategoryController extends Controller
 {

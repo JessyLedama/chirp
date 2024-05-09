@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\Chirp;
 
-class LikeChirpService{
+class ChirpService{
     
     // get all chirps
     public static function chirps()
@@ -12,5 +12,13 @@ class LikeChirpService{
         $chirps = Chirp::with(['likes'])->get();
 
         return $chirps;
+    }
+
+    // count the chirps
+    public static function count()
+    {
+        $count = Chirp::count();
+
+        return $count;
     }
 }
